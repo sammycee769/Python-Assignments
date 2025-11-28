@@ -9,5 +9,7 @@ class TestMinutes(unittest.TestCase):
         expected = "Heat alert"
         self.assertEqual(actual,expected)
         actual = temperature_function.temp_checker(1300,"F",1200)
-        expected = "cold advisory"
+        expected = "Heat alert"
         self.assertEqual(actual,expected)
+    def test_that_temp_checker_of_raises_type_error_for_non_integers(self):
+        self.assertRaises(TypeError, temperature_function.temp_checker, "sam", 7)
