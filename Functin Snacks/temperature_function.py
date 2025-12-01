@@ -1,4 +1,10 @@
 def temp_checker(number,temperature_unit,threshold):
+    if type(number) is str or type(threshold) is str:
+        raise TypeError("Input a ")
+    if type(temperature_unit) is not str: 
+        raise TypeError("Input must be string")
+    if temperature_unit not in ("C","F","c","f"):
+        raise TypeError("Temperature must be C or F")
     if(temperature_unit == 'C' or temperature_unit == 'c'):
         temperature_unit_in_fahrenheit = (number * (9/5))+32
         threshold_in_fahrenheit = (threshold * (9/5))+32
@@ -16,4 +22,4 @@ def temp_checker(number,temperature_unit,threshold):
     else:
         return "Invalid Input"
     
-#print(temp_checker(27,"c",19))
+#print(temp_checker(90,"g",19))
