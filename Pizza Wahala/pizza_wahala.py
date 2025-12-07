@@ -44,7 +44,7 @@ if pizza_type == "small money size" and number_of_people % small_money_slice == 
     pizza_box =  number_of_people / small_money_slice
     amount_to_pay = small_money_price * pizza_box
     leftover = 0
-elif pizza_type == "ssmall money size" and number_of_people % small_money_slice != 0:
+elif pizza_type == "small money size" and number_of_people % small_money_slice != 0:
     pizza_box =  (number_of_people // small_money_slice) + 1
     amount_to_pay = small_money_price * pizza_box
     leftover = (pizza_box * small_money_slice) - number_of_people
