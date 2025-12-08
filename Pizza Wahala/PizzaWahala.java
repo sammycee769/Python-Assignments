@@ -28,13 +28,24 @@ Odogwu size
 Odogwu_slice = 12
 Odogwu_price = 4200
 """);
+int numberOfPeople;
 
-        System.out.print("How Many Guests Do You Intend Serving: ");
-        int numberOfPeople = input.nextInt();
-        input.nextLine();
+        while (true) {
+            System.out.print("How Many Guests Do You Intend Serving: ");
+
+            if (!input.hasNextInt()) {
+                System.out.println("Invalid input! Please enter only numbers.");
+                input.next(); 
+            } else {
+                numberOfPeople = input.nextInt(); 
+                input.nextLine(); 
+                break; 
+            }
+        }
 
         System.out.print("What Type Of Pizza Do You Intend Buying: ");
         String pizzaType = input.nextLine().toLowerCase();
+
 
         if (
             (!pizzaType.equals("sapa size") &&

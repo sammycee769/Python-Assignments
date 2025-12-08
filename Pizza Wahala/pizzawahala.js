@@ -33,6 +33,10 @@ Odogwu_price = 4200
 
 
 let numberOfPeople = parseInt(prompt("How Many Guests Do You Intend Serving: "));
+if(!Number.isInteger(numberOfPeople)){
+  console.log("Invalid input! Enter a valid number.");
+  process.exit(0);
+}
 let pizzaType = prompt("What Type Of Pizza Do You Intend Buying: ").toLowerCase();
 
 if (

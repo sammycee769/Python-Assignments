@@ -24,7 +24,12 @@ Odogwu size
 Odogwu_slice = 12
 Odogwu_price = 4200
  """)
-number_of_people = int(input("How Many Guests Do You Intend Serving: "))
+while True:
+    try:
+        number_of_people = int(input("How Many Guests Do You Intend Serving: "))
+        break
+    except ValueError:
+        print("Invalid input! Please enter only numbers.")
 pizza_type = input("What Type Of Pizza Do You Intend Buying: ").lower()
 
 if pizza_type not in ["small money size","sapa size","big boys size","odogwu size" ]  or number_of_people <= 0:
