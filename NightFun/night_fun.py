@@ -11,10 +11,8 @@ def unpack_student_data(student_data):
         print(f"Name: {name}, Score: {score}")
 
 def unpack_student_data_with_scores_above_60(student_data):
-    # for name, score in student_data:
-    #     if score > 60:
-    #         print(f"Name: {name}, Score: {score}")
-    unpacked = [ (name, score) for name, score in student_data if score > 60 ]
+   
+    unpacked = [ student_data[0] for student_data in student_data if student_data[1] > 60 ]
     return unpacked
 
 def count_students_above_60(student_data):
@@ -25,8 +23,8 @@ def count_students_above_60(student_data):
     return count
 
 # unpacked_students = unpack_student_data(students)
-# unpacked_students_above_60 = unpack_student_data_with_scores_above_60(students)
-# print(unpacked_students_above_60)
+unpacked_students_above_60 = unpack_student_data_with_scores_above_60(students)
+print(unpacked_students_above_60)
 # print(count_students_above_60(students))
 
 products = [
@@ -61,7 +59,7 @@ points = [ (2, 3),
 ]
 
 def unpack_point_data(point_data):
-    unpacked_data=[ (x,y) for x, y in point_data if x >= 0 and y >= 0 ]   
+    unpacked_data=[ (x_coordinate,y_coordinate) for x_coordinate, y_coordinate in point_data if x_coordinate >= 0 and y_coordinate >= 0 ]   
     return unpacked_data
 
 # print(unpack_point_data(points))     
@@ -76,6 +74,7 @@ employees = [
 def unpack_employee_data(employee_data):
     for name, department, salary in employee_data:
         print(f"Name: {name}, Department: {department}, Salary: {salary}")
+
 def it_department_employees(employee_data):
     it_employees = [ (name, department, salary) for name, department, salary in employee_data if department == "IT" ]
     return it_employees
