@@ -60,9 +60,10 @@ points = [ (2, 3),
 (-3, -2)
 ]
 
-# def unpack_point_data(point_data):
-#     unpacked_data=[ (x,y) for x, y in point_data if x >= 0 and y >= 0 ]   
-#     return unpacked_data
+def unpack_point_data(point_data):
+    unpacked_data=[ (x,y) for x, y in point_data if x >= 0 and y >= 0 ]   
+    return unpacked_data
+
 # print(unpack_point_data(points))     
 
 employees = [
