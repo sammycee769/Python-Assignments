@@ -21,7 +21,7 @@ class StudentManagement:
         new_age = age if age is not None else student.__Student_age
         new_email = email if email is not None else student.__Student_email
 
-        student.update_details(new_name,new_age,new_email)
+        student.update_details(new_name,self.__age_validator(new_age),self.__email_validator(new_email))
 
     def get_student(self,student_username):
         return self.__students.get(student_username)

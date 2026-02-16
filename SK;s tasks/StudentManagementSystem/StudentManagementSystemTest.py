@@ -58,7 +58,7 @@ class StudentManagementSystemTest(unittest.TestCase):
         courses = self.student_management.get_student_courses("chris101")
         self.assertEqual(courses, ["Math"])
 
-    def test_that_I_try_to_enroll_a_student_without_adding_hum_throws_an_error(self):
+    def test_that_I_try_to_enroll_a_student_without_adding_him_throws_an_error(self):
         with self.assertRaises(ValueError) as context:self.student_management.enroll_student("lamine","Math")
         self.assertEqual(str(context.exception), "Student does not exist")
 
@@ -81,6 +81,47 @@ class StudentManagementSystemTest(unittest.TestCase):
         self.assertEqual(student.get_name(), "Samuel")
         self.assertEqual(student.get_age(), 20)
         self.assertEqual(student.get_email(), "christian123@gmail.com")
+
+    def test_that_I_try_to_update_a_nonexistent_student_it_throws_an_error(self):
+        total_students = self.student_management.get_total_students()
+        self.assertEqual(total_students, 1)
+
+        with self.assertRaises(ValueError) as context:self.student_management.update_student("fade",19,"sade@gmail.com")
+        self.assertEqual(str(context.exception), "Student does not exist")
+        total_students = self.student_management.get_total_students()
+        self.assertEqual(total_students, 1)
+
+    def test_that_I_create_a_student_and_I_try_to_update_student_with_wrong_email_it_throws_an_error(self):
+        student = self.student_management.get_student("chris101")
+        self.assertEqual(student.get_name(), "Christian")
+        self.assertEqual(student.get_age(), 18)
+        self.assertEqual(student.get_email(), "samuelchristian769@gmail.com")
+
+        with self.assertRaises(ValueError) as context:self.student_management.update_student("chris101","sammy",18,"sammy9")
+        self.assertEqual(str(context.exception), "Invalid Email Address")
+        self.assertEqual(student.get_name(), "Christian")
+        self.assertEqual(student.get_age(), 18)
+        self.assertEqual(student.get_email(), "samuelchristian769@gmail.com")
+
+    def test_that_I_create_a_student_and_I_try_to_update_student_with_invalid_age_it_throws_an_error(self):
+        student = self.student_management.get_student("chris101")
+        self.assertEqual(student.get_name(), "Christian")
+        self.assertEqual(student.get_age(), 18)
+        self.assertEqual(student.get_email(), "samuelchristian769@gmail.com")
+
+        with self.assertRaises(ValueError) as context:self.student_management.update_student("chris101","sammy",70,"sammy9")
+        self.assertEqual(str(context.exception), "Age must be between 0 and 30")
+        self.assertEqual(student.get_name(), "Christian")
+        self.assertEqual(student.get_age(), 18)
+        self.assertEqual(student.get_email(), "samuelchristian769@gmail.com")
+
+    def test_that_I_create_a_student_I_can_update_only_name_and_my_other_details_remain_same(self):
+        student = self.student_management.get_student("chris101")
+        self.assertEqual(student.get_name(), "Christian")
+        self.assertEqual(student.get_age(), 18)
+        self.assertEqual(student.get_email(), "samuelchristian769@gmail.com")
+
+        self.student_management.update_student("chris101","sammy")
 
 
 

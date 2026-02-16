@@ -20,7 +20,7 @@ class Student:
         self.__name = name
         self.__age = self.__age_validator(age)
         self.__email = self.__email_validator(email)
-        
+
 
     def get_name(self):
         return self.__name
