@@ -10,6 +10,10 @@ class Student:
     def get_username(self):
         return self.__user_name
 
+    def get_grade(self):
+        return self.__course_summary
+
+
     def set_courses(self,course):
         self.__course_summary.append(course)
 

@@ -17,11 +17,22 @@ class StudentManagement:
         student = self.__students.get(student_username)
         self.__student_validator(student)
 
-        new_name = name if name is not None else student.__Student_name
-        new_age = age if age is not None else student.__Student_age
-        new_email = email if email is not None else student.__Student_email
+        if not name:
+            name = student.get_name()
 
-        student.update_details(new_name,self.__age_validator(new_age),self.__email_validator(new_email))
+        if not age:
+            age = student.get_age()
+
+        if not email:
+            email = student.get_email()
+
+        student.update_details(
+            name,
+            self.__age_validator(age),
+            self.__email_validator(email)
+        )
+
+        student.update_details(name,self.__age_validator(age),self.__email_validator(email))
 
     def get_student(self,student_username):
         return self.__students.get(student_username)
@@ -48,7 +59,7 @@ class StudentManagement:
     def get_student_courses(self,student_username):
         student = self.__students.get(student_username)
         self.__student_validator(student)
-        return [course.get_course_name() for course in student.get_courses()]
+        return [course.get_courses_name() for course in student.get_courses()]
 
     def __duplicate_student_validator(self,student_username):
         if student_username  in self.__students:

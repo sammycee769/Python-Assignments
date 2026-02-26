@@ -15,6 +15,9 @@ class Television:
     def turn_off(self):
         self.__is_on = False
 
+    def check_tv_power_status(self):
+        return self.__is_on
+
     def  __check_power_status(self):
         if not self.__is_on:
             raise ValueError("TV is Off")

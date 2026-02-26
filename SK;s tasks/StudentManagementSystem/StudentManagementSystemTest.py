@@ -122,6 +122,16 @@ class StudentManagementSystemTest(unittest.TestCase):
         self.assertEqual(student.get_email(), "samuelchristian769@gmail.com")
 
         self.student_management.update_student("chris101","sammy")
+        self.assertEqual(student.get_name(), "sammy")
+        self.assertEqual(student.get_age(), 18)
+        self.assertEqual(student.get_email(), "samuelchristian769@gmail.com")
+
+    def test_that_I_create_a_student_I_can_assign_grade(self):
+        student = self.student_management.get_student("chris101")
+        self.assertEqual(student.g, "A")
+
+    
+
 
 
 

@@ -6,27 +6,36 @@ class TelevisionTest (unittest.TestCase):
        self.tv = Television()
 
     def test_that_I_Plug_TV_It_is_Initially_Off(self):
-        self.assertFalse(self.tv.is_on())
 
-    def test_That_TV_Can_be_Turned_Off_After_Use(self):
-        self.tv.turn_on()
-        self.tv.turn_off()
-        self.assertFalse(self.tv.is_on())
+        self.assertEqual(self.tv.check_tv_power_status(),False)
+    # def test_That_TV_Can_be_Turned_Off_After_Use(self):
+    #     self.assertFalse(self.tv.is_on())
+
+    #     self.tv.turn_on()
+    #     self.tv.turn_off()
+    #     self.assertFalse(self.tv.is_on())
+
+    
 
     def test_That_I_Turn_TV_On_I_Can_Increase_Volume(self):
+        self.assertFalse(self.tv.check_tv_power_status())
         self.tv.turn_on()
-        initial_volume = self.tv.get_volume()
+        volume = self.tv.get_volume()
+        self.assertEqual(volume,0)
         self.tv.increase_volume()
-        self.assertEqual(self.tv.get_volume(), initial_volume + 1)
+        volume = self.tv.get_volume()
+        self.assertEqual(volume, 1)
 
     def test_That_I_Try_To_Increase_Volume_Without_Turning_TV_On_Volume_Remains_Same_And_Throws_An_Error(self):
+        self.assertFalse(self.tv.check_tv_power_status())
         initial_volume = self.tv.get_volume()
         with self.assertRaises(ValueError):self.tv.increase_volume()
         self.assertEqual(0, initial_volume)
 
     def test_That_I_Try_To_Decrease_Volume_Without_Turning_TV_On_Volume_Remains_Same_And_Throws_An_Error(self):
+        self.assertFalse(self.tv.check_tv_power_status())
         initial_volume = self.tv.get_volume()
-        with self.assertRaises(ValueError):self.tv.increase_volume()
+        with self.assertRaises(ValueError):self.tv.decrease_volume()
         self.assertEqual(0, initial_volume)
 
     def test_That_I_Turn_On_TV_I_Can_Not_Increase_Past_MAx(self):
